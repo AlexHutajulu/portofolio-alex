@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Linkedin, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="py-24 px-6 relative z-10">
       <div className="max-w-5xl mx-auto">
@@ -13,10 +16,10 @@ export default function Contact() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Mari <span className="text-gradient">Terhubung</span>
+            {t('contact.title1')} <span className="text-gradient">{t('contact.title2')}</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Saya selalu terbuka untuk mendiskusikan peluang baru, proyek kolaborasi, atau sekadar bertukar pikiran mengenai teknologi.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -33,7 +36,7 @@ export default function Contact() {
                 <Phone className="text-cyan-600 dark:text-cyan-400 w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1">
-                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">Telepon / WhatsApp</div>
+                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">{t('contact.phone')}</div>
                 <div className="text-slate-900 dark:text-white font-display text-lg sm:text-xl">08XXXXXXXX</div>
               </div>
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 dark:text-slate-600 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors" />
@@ -44,7 +47,7 @@ export default function Contact() {
                 <Mail className="text-indigo-600 dark:text-indigo-400 w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">Email</div>
+                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">{t('contact.email')}</div>
                 <div className="text-slate-900 dark:text-white font-display text-base sm:text-xl truncate sm:break-all">alexandronadio057@gmail.com</div>
               </div>
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-slate-400 dark:text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
@@ -55,8 +58,8 @@ export default function Contact() {
                 <MapPin className="text-purple-600 dark:text-purple-400 w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="flex-1">
-                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">Alamat</div>
-                <div className="text-slate-900 dark:text-white font-display text-base sm:text-xl leading-tight">Komplek Husada Bhakti Laburan</div>
+                <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1 font-medium tracking-wide uppercase">{t('contact.address')}</div>
+                <div className="text-slate-900 dark:text-white font-display text-base sm:text-xl leading-tight">{t('contact.addressValue')}</div>
               </div>
             </div>
           </motion.div>
@@ -73,9 +76,9 @@ export default function Contact() {
             <div className="w-24 h-24 rounded-full bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-200 dark:border-blue-500/20 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(59,130,246,0.1)] dark:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
               <Linkedin className="w-10 h-10 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 font-display">LinkedIn Profile</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 font-display">{t('contact.linkedinTitle')}</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm">
-              Kunjungi profil LinkedIn saya untuk melihat detail pengalaman profesional dan koneksi.
+              {t('contact.linkedinDesc')}
             </p>
             <a 
               href="https://linkedin.com/in/alexandro-nadio-hutajulu" 
@@ -84,7 +87,7 @@ export default function Contact() {
               className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] dark:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2 relative z-10"
             >
               <Linkedin className="w-5 h-5" />
-              Lihat Profil
+              {t('contact.linkedinBtn')}
             </a>
           </motion.div>
         </div>

@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Rocket, Sun, Moon } from 'lucide-react';
-
-const navItems = [
-  { name: 'Beranda', href: '#' },
-  { name: 'Pengalaman', href: '#experience' },
-  { name: 'Pendidikan', href: '#education' },
-  { name: 'Sertifikasi', href: '#certifications' },
-  { name: 'Kontak', href: '#contact' },
-];
+import { Menu, X, Rocket, Sun, Moon, Languages } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const { language, toggleLanguage, t } = useLanguage();
+
+  const navItems = [
+    { name: t('nav.home'), href: '#' },
+    { name: t('nav.experience'), href: '#experience' },
+    { name: t('nav.education'), href: '#education' },
+    { name: t('nav.certifications'), href: '#certifications' },
+    { name: t('nav.contact'), href: '#contact' },
+  ];
 
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains('dark');
@@ -65,13 +67,23 @@ export default function Navbar() {
               <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
             </a>
           ))}
-          <button 
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center gap-2 border-l border-slate-200 dark:border-white/10 pl-6 ml-2">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors text-sm font-medium"
+              aria-label="Toggle language"
+            >
+              <Languages className="w-4 h-4" />
+              <span className="uppercase">{language}</span>
+            </button>
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -81,7 +93,14 @@ export default function Navbar() {
           <Rocket className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
           ANH<span className="text-indigo-600 dark:text-indigo-400">.</span>
         </a>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 px-2 py-1.5 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors text-sm font-medium"
+          >
+            <Languages className="w-4 h-4" />
+            <span className="uppercase">{language}</span>
+          </button>
           <button 
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 transition-colors"

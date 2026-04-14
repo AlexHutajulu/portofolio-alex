@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { Linkedin, Mail, ArrowRight, Terminal, Code2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="min-h-screen flex items-center justify-center pt-24 pb-10 px-6 relative overflow-hidden">
       {/* Background glowing elements */}
@@ -25,23 +28,23 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
             </span>
-            IT Support & Programmer
+            {t('hero.role')}
           </motion.div>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 leading-[1.1]">
-            Hi, I'm <br />
+            {t('hero.greeting')} <br />
             <span className="text-gradient">Alexandro Nadio Hutajulu</span>
           </h1>
           
           <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0 font-light">
-            Lulusan Diploma III Teknik Informatika. Berorientasi pada pemecahan masalah dan siap berkontribusi dalam meningkatkan efisiensi layanan teknologi informasi melalui kode dan infrastruktur yang handal.
+            {t('hero.description')}
           </p>
           
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5">
             <a href="#contact" className="group relative px-8 py-4 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold overflow-hidden transition-all hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative flex items-center gap-2">
-                Hubungi Saya <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {t('hero.contactBtn')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
             
@@ -70,7 +73,7 @@ export default function Hero() {
               className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 z-20 glass-panel p-2 sm:p-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 will-change-transform"
             >
               <div className="p-1.5 sm:p-2 bg-cyan-500/20 rounded-lg text-cyan-600 dark:text-cyan-400"><Code2 className="w-4 h-4 sm:w-5 sm:h-5" /></div>
-              <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white pr-1 sm:pr-2">Web Dev</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white pr-1 sm:pr-2">{t('hero.badgeWeb')}</span>
             </motion.div>
 
             <motion.div 
@@ -79,7 +82,7 @@ export default function Hero() {
               className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 z-20 glass-panel p-2 sm:p-3 rounded-xl sm:rounded-2xl flex items-center gap-2 sm:gap-3 will-change-transform"
             >
               <div className="p-1.5 sm:p-2 bg-purple-500/20 rounded-lg text-purple-600 dark:text-purple-400"><Terminal className="w-4 h-4 sm:w-5 sm:h-5" /></div>
-              <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white pr-1 sm:pr-2">IT Support</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white pr-1 sm:pr-2">{t('hero.badgeIT')}</span>
             </motion.div>
 
             {/* Orbiting Rings */}

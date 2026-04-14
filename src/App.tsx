@@ -10,8 +10,11 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Starfield from './components/Starfield';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
-export default function App() {
+function AppContent() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen selection:bg-indigo-500/30">
       <Starfield />
@@ -26,8 +29,16 @@ export default function App() {
       </main>
       
       <footer className="py-8 text-center text-slate-500 dark:text-slate-500 text-sm border-t border-slate-200 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/50 backdrop-blur-sm transition-colors duration-500">
-        <p>© {new Date().getFullYear()} Alexandro Nadio Hutajulu. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Alexandro Nadio Hutajulu. {t('footer.rights')}</p>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }

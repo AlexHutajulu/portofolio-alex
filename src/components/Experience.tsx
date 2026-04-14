@@ -1,30 +1,11 @@
 import { motion } from 'motion/react';
 import { Briefcase, Calendar, ChevronRight } from 'lucide-react';
-
-const experiences = [
-  {
-    title: "Programmer",
-    company: "Dinas Komunikasi dan Informatika",
-    period: "Sep 2023 - Jan 2024",
-    description: [
-      "Mengembangkan dan mengimplementasikan website SOHIB (Sistem Online Hibah Banjarbaru) untuk bagian Kesra Setda Kota Banjarbaru.",
-      "Mendesain dan mengembangkan tampilan antarmuka (UI) agar responsif dan user-friendly.",
-      "Berkolaborasi dengan tim dalam proses analisis kebutuhan sistem, pengembangan fitur, hingga pengujian aplikasi."
-    ]
-  },
-  {
-    title: "IT Support",
-    company: "PT Bukit Makmur Mandiri Utama",
-    period: "Feb 2020 - Apr 2020",
-    description: [
-      "Menangani troubleshooting hardware dan software untuk pengguna internal sehingga meningkatkan efisiensi kerja operasional.",
-      "Melakukan maintenance rutin pada perangkat komputer untuk memastikan kinerja normal.",
-      "Melakukan instalasi dan konfigurasi sistem operasi windows serta aplikasi pendukung kerja."
-    ]
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Experience() {
+  const { t } = useLanguage();
+  const experiences = t('experience.items');
+
   return (
     <section id="experience" className="py-24 px-6 relative z-10">
       <div className="max-w-4xl mx-auto">
@@ -36,12 +17,12 @@ export default function Experience() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Pengalaman <span className="text-gradient">Kerja</span>
+            {t('experience.title1')} <span className="text-gradient">{t('experience.title2')}</span>
           </h2>
         </motion.div>
 
         <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-cyan-500/50 before:via-indigo-500/50 before:to-transparent">
-          {experiences.map((exp, index) => (
+          {experiences.map((exp: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}

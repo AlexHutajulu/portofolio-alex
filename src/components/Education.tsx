@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
 import { GraduationCap, Calendar, BookOpen } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Education() {
+  const { t } = useLanguage();
+  const items = t('education.items');
+
   return (
     <section id="education" className="py-24 px-6 relative z-10">
       <div className="max-w-4xl mx-auto">
@@ -13,7 +17,7 @@ export default function Education() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Riwayat <span className="text-gradient">Pendidikan</span>
+            {t('education.title1')} <span className="text-gradient">{t('education.title2')}</span>
           </h2>
         </motion.div>
 
@@ -35,19 +39,15 @@ export default function Education() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2 font-display">Diploma III Teknik Informatika</h3>
-                <div className="text-purple-600 dark:text-purple-400 text-lg sm:text-xl font-medium mb-4">Politeknik Negeri Banjarmasin</div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2 font-display">{t('education.degree')}</h3>
+                <div className="text-purple-600 dark:text-purple-400 text-lg sm:text-xl font-medium mb-4">{t('education.school')}</div>
                 <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-6 bg-slate-100 dark:bg-white/5 w-fit px-4 py-1.5 rounded-full border border-slate-200 dark:border-white/5">
                   <Calendar className="w-4 h-4" />
-                  <span>2021 - 2024</span>
+                  <span>{t('education.period')}</span>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    "Mempelajari dasar dan lanjutan pemograman, pengembangan web, serta manajemen basis data.",
-                    "Mempelajari dasar jaringan komputer, sistem operasi, serta maintenance perangkat.",
-                    "Mengembangkan aplikasi berbasis web menggunakan framework Laravel."
-                  ].map((item, i) => (
+                  {items.map((item: string, i: number) => (
                     <div key={i} className="flex items-start gap-3 bg-slate-50 dark:bg-white/[0.02] p-4 rounded-xl border border-slate-200 dark:border-white/5">
                       <BookOpen className="w-5 h-5 text-purple-500 dark:text-purple-400 shrink-0 mt-0.5" />
                       <span className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{item}</span>

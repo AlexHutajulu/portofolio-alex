@@ -1,43 +1,11 @@
 import { motion } from 'motion/react';
 import { Award, Sparkles } from 'lucide-react';
-
-const certifications = [
-  {
-    title: "Programmer Software Development",
-    issuer: "Badan Nasional Sertifikasi Profesi",
-    highlight: true
-  },
-  {
-    title: "Axioo Class Program Hardware Fundamental",
-    issuer: "PT Tera Data Indonusa"
-  },
-  {
-    title: "Axioo Class Program Hardware Maintenance-Basic Level",
-    issuer: "PT Tera Data Indonusa"
-  },
-  {
-    title: "Axioo Class Program Hardware Troubleshooting-Basic Level",
-    issuer: "PT Tera Data Indonusa"
-  },
-  {
-    title: "Test of English International communication",
-    issuer: "Educational testing Service"
-  },
-  {
-    title: "Basic life Support & Basic Fire Fighter",
-    issuer: "PT Adaro Indonesia"
-  },
-  {
-    title: "Praktik Kerja Lapangan",
-    issuer: "PT Bukit Makmur Mandiri Utama"
-  },
-  {
-    title: "Praktik Kerja Lapangan",
-    issuer: "Dinas Komunikasi dan Informatika"
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Certifications() {
+  const { t } = useLanguage();
+  const certifications = t('certifications.items');
+
   return (
     <section id="certifications" className="py-24 px-6 relative z-10">
       <div className="max-w-5xl mx-auto">
@@ -49,12 +17,12 @@ export default function Certifications() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Sertifikasi & <span className="text-gradient">Pelatihan</span>
+            {t('certifications.title1')} <span className="text-gradient">{t('certifications.title2')}</span>
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {certifications.map((cert, index) => (
+          {certifications.map((cert: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
